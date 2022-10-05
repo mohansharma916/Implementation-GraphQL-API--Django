@@ -157,10 +157,5 @@ mutation {
   
 ```
 
-
-![Screenshot 2022-10-06 at 12 00 59 AM](https://user-images.githubusercontent.com/77909856/194137250-a264b1dc-f299-4080-ad74-70be630b5277.png)
-
-
-
-
+![Screenshot 2022-10-06 at 12 10 37 AM](https://user-images.githubusercontent.com/77909856/194137453-3c355159-92c3-4c3f-a66c-df879b78b4fd.png)
 
