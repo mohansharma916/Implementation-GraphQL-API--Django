@@ -99,11 +99,68 @@ October 05, 2022 - 18:04:05
 Django version 3.1.14, using settings 'quickstart.settings'
 Starting development server at http://127.0.0.1:8000/
 Quit the server with CONTROL-C
+```
+CLick On the Link <a>http://127.0.0.1:8000/graphql</a> 
+
+This will open the GraphiQL API browser, where you can play with your queries and mutations, also let you explore the schema.
+
+![Screenshot 2022-10-06 at 12 00 59 AM](https://user-images.githubusercontent.com/77909856/194135607-34c5594d-05bb-414e-bd71-79881e2cedc6.png)
+
+
+
+
+<strong> Write Your First Query</strong>
+
+Copy the query below, paste on the GraphiQL interface and hit the play button.
+
+```
+query {
+  users {
+    edges {
+      node {
+        username,
+        archived,
+        verified,
+        email,
+        secondaryEmail,
+      }
+    }
+  }
+}
+
+```
+
+
+
+![Screenshot 2022-10-06 at 12 05 36 AM](https://user-images.githubusercontent.com/77909856/194136315-75828d16-56a9-4f93-bce5-2b192481f833.png)
+
+
+
+
+#Add A New User
 
 
 ```
-  
-  
 
-
+mutation {
+  register(
+    email: "new_user@email.com",
+    username: "new_user",
+    password1: "123456",
+    password2: "123456",
+  ) {
+    success,
+    errors,
+    token,
+    refreshToken
+  }
+  
 ```
+
+
+![Screenshot 2022-10-06 at 12 00 59 AM](https://user-images.githubusercontent.com/77909856/194137250-a264b1dc-f299-4080-ad74-70be630b5277.png)
+
+
+
+
+
