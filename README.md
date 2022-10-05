@@ -112,6 +112,7 @@ Then, Migrate
 # Setup Graphene and GraphQL JWT
 
 <strong> 2. What is Graphene-Django ?</strong>
+
 Graphene-Django "make it easy to add GraphQL functionality to your Django project".
 
 
