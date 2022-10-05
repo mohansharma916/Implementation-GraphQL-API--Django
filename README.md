@@ -62,3 +62,64 @@ INSTALLED_APPS=[
               ]
 ```
 
+Now Lets Check the App is running or not by Using Django runserver Command
+
+```
+(env) $ python manage.py runserver
+
+```
+
+if everything works as Shown above, and if we  go http://127.0.0.1:8000/ in the browser we should see the following success message.
+
+![Screenshot 2022-10-05 at 9 22 17 PM](https://user-images.githubusercontent.com/77909856/194105352-8d5c3d10-11c9-448b-acee-f1a96a41277b.png)
+
+
+# Set up Custom user Model
+
+```
+#users/models.py
+
+from django.contrib.auth.models import AbstractUser
+
+class CustomUser(AbstractUser):
+      
+    email = models.EmailField(blank=False, max_length=254, verbose_name="email address")
+
+    USERNAME_FIELD = "username"   # e.g: "username", "email"
+    EMAIL_FIELD = "email"         # e.g: "email", "primary_email"
+
+
+```
+
+Add it to the Settings:
+
+```
+ #quickstart/settings.py
+
+AUTH_USER_MODEL='users.CustomUser'
+ 
+```
+
+Then, Migrate
+
+```
+(env) $ python manage.py migrate
+
+```
+
+
+
+# Setup Graphene and GraphQL JWT
+
+<strong> 2. What is Graphene-Django ?</strong>
+Graphene-Django "make it easy to add GraphQL functionality to your Django project".
+
+
+<strong>3. What is Django-GraphQL-JWT ?</strong>
+
+Django-GraphQL-JWT is the easiest way to add JSON Web token authentication for Django with GraphQL.
+
+
+
+
+
