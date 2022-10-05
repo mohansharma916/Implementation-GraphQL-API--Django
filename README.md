@@ -122,5 +122,69 @@ Django-GraphQL-JWT is the easiest way to add JSON Web token authentication for D
 
 
 
+<h2>Installation</h2>
+
+```
+(env) $ pip install graphene-django django-graphql-jwt==0.3.0
+```
+
+
+# Add The url
+
+```
+# quickstart.urls.py
+
+from django.urls import path
+from django.views.decorators.csrf import csrf_exempt
+
+from graphene_django.views import GraphQLView
+
+urlpatterns = [
+    ...
+    path("graphql", csrf_exempt(GraphQLView.as_view(graphiql=True))),
+]
+
+```
+
+# Edit your Settings
+
+```
+# quickstart.settings.py
+
+INSTALLED_APPS = [
+    # ...
+    'django.contrib.staticfiles', # Required for GraphiQL
+    'graphene_django',
+
+    # refresh tokens are optional
+    'graphql_jwt.refresh_token.apps.RefreshTokenConfig',
+]
+
+MIDDLEWARE = [
+    # ...
+    'django.contrib.auth.middleware.AuthenticationMiddleware',
+    # ...
+]
+
+GRAPHENE = {
+    'SCHEMA': 'quickstart.schema.schema', # this file doesn't exist yet
+    'MIDDLEWARE': [
+        'graphql_jwt.middleware.JSONWebTokenMiddleware',
+    ],
+}
+
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend',
+]
+
+GRAPHQL_JWT = {
+    "JWT_VERIFY_EXPIRATION": True,
+
+    # optional
+    "JWT_LONG_RUNNING_REFRESH_TOKEN": True,
+}
+```
+
+
 
 
